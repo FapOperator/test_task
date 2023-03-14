@@ -81,7 +81,7 @@ class OverflowDetectorText extends StatelessWidget {
           supportTextParams.add(listString[i]);
           mainText = supportTextParams.join(", ");
           // позволяет узнать высоту текста при каждой итерации цикла
-          TextPainter tp2 = TextPainter(
+          TextPainter tp = TextPainter(
             maxLines: child.maxLines,
             textAlign: child.textAlign ?? TextAlign.start,
             textDirection: child.textDirection ?? TextDirection.ltr,
@@ -92,13 +92,13 @@ class OverflowDetectorText extends StatelessWidget {
                 ),
           );
           // указание ширины текста
-          tp2.layout(maxWidth: constrains.maxWidth);
+          tp.layout(maxWidth: constrains.maxWidth);
           //вычисление максимальное возможного количества строк на данной итерации, преобразование высот, в понятное число для maxLines
-          linesCountFullText = (bodyHeight / tp2.preferredLineHeight).ceil();
+          linesCountFullText = (bodyHeight / tp.preferredLineHeight).ceil();
           //если высота текста превышает высоту body, то true
-          if (tp2.size.height > bodyHeight) {
+          if (tp.size.height > bodyHeight) {
             linesCountCollapse =
-                (tp2.size.height / tp2.preferredLineHeight).ceil() - 1;
+                (tp.size.height / tp.preferredLineHeight).ceil() - 1;
             break;
           }
         }
