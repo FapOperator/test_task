@@ -78,11 +78,13 @@ class ReadMoreTextState extends State<ReadMoreText> {
         // если есть переполнение добавляется плашка "больше"
         if (textPainter.didExceedMaxLines) {
           textSpan = TextSpan(
+            style: const TextStyle(color: Colors.black),
             text: widget.data.substring(0, endIndex),
             children: <TextSpan>[link],
           );
         } else {
           textSpan = TextSpan(
+            style: const TextStyle(color: Colors.black),
             text: widget.data,
           );
         }
